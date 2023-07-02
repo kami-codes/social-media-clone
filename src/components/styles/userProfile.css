@@ -1,0 +1,77 @@
+.userProfile-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #DDE6ED;
+    align-items: center;
+    gap: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: scroll;
+    position: relative;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.userProfile-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+
+
+.userProfile-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.userProfile-username{
+    font-size: 2rem;
+    margin-top: -10px;
+}
+.userProfile-Image{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+}
+.userProfile-information{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.followers span{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.followers p{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.follow-buttons{
+    display: flex;
+    gap: 10px;
+}
+.follow-buttons button{
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 150px;
+    transition: all ease-in-out 0.3s;
+}
+
+.follow-buttons button:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.to-follow-button{
+background-color: blue !important;
+color: white;
+}
+.to-follow-button.unfollow{
+background-color: white !important;
+color: black !important;
+}

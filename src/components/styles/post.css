@@ -1,0 +1,88 @@
+.post-container{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 350px;
+    max-width: 400px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post-time{
+    color: #27374D;
+    font-size: 0.8rem;
+}
+
+.post-profile-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-profile{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.post-profile img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.post-profile p{
+    font-weight: bold;
+    font-size: 1rem;
+    color: #27374D;
+}
+
+.post-likes{
+    font-weight: 550;
+}
+.post-caption{
+    color: #27374D;
+}
+
+.post-photo{
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+}
+.post-like-button{
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+}
+
+.engagement-buttons{
+    display: flex;
+    gap: 10px;
+}
+.post-comment{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.post-comment input{
+    background-color: transparent;
+    width: 100%;
+}
+.comment-send-button{
+    border: none;
+    background-color: transparent;
+   
+}
+
+.post-details{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.post-caption-control{
+    font-size: 0.9rem;
+    color: #27374D;
+    font-weight: bold;
+}

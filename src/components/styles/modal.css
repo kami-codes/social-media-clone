@@ -1,0 +1,66 @@
+.followers-container{
+    width: 100vw;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.followers-window{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+}
+.followers-window p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.followers-empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+.window-close{
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    color: red;
+    top: 10px;
+    right: 10px;
+}
+.following-users-container{
+    display: flex;
+    flex-direction: column;
+}
+.following-profile{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all linear 0.3s;
+}
+.following-profile:hover{
+   background-color: rgb(221, 221, 221);
+}
+.following-profile p{
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+.following-profile img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}

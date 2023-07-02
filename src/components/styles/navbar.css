@@ -1,0 +1,27 @@
+.navbar-container{
+    background-color: #DDE6ED;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    color:  #27374D !important;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
+    border-top: 2px solid black;
+}
+.navbar-container a{
+    color:  #27374D !important;
+    padding: 0;
+    margin: 0;
+}
+.navbar-profile-photo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.navbar-profile-photo.outline-profile{
+    outline: 2px solid black;
+}
