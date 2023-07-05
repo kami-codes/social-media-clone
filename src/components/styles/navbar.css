@@ -1,21 +1,22 @@
 .navbar-container{
-    background-color: #DDE6ED;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 60px;
     color:  #27374D !important;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    margin: auto;
-    border-top: 2px solid black;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 .navbar-container a{
     color:  #27374D !important;
     padding: 0;
-    margin: 0;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+
 }
+
 .navbar-profile-photo{
     width: 30px;
     height: 30px;
@@ -24,4 +25,24 @@
 }
 .navbar-profile-photo.outline-profile{
     outline: 2px solid black;
+}
+
+.navbar-icon-text{
+    text-align: center;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+    .navbar-container a p{
+        display: none;
+    }
+    .navbar-container{
+        flex-direction: row;
+        position: fixed;
+        bottom: 0;
+        border-top: 1px solid black;
+        width: 100vw;
+        box-sizing: border-box;
+        height: 60px;
+    }
 }

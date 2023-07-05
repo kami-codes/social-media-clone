@@ -23,7 +23,7 @@ import Modal from "./components/Modal";
 
 const Layout = ({ children }) => {
   return (
-    <div style={{width: "100vw", height: "100vh"}}>
+    <div className="biggest-outer-div" style={{width: "100vw", height: "100vh"}}>
       <Navbar />
       <div className="outlet-container" style={{width: "100vw"}}>
         {/* <AddPost /> */}

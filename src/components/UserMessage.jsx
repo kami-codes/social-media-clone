@@ -115,8 +115,8 @@ function UserMessage() {
       }
     }
 
-    return () => unsub() ;
-  }, []);
+   unsub() ;
+  }, [currentUser]);
 
   useEffect(() => {
     const roomRef = collection(db, "Messages");
@@ -163,7 +163,7 @@ function UserMessage() {
             setMessageText(e.target.value);
           }}
         />
-        <button className="user-message-send-button" type="submit"> <SendIcon /> </button>
+        <button disabled={messageText.length === 0} className="user-message-send-button" type="submit"> <SendIcon /> </button>
       </form>
     </div>
   );

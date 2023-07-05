@@ -36,18 +36,22 @@ const Navbar = () => {
     <div className="navbar-container">
       <Link to="/">
         {location.pathname === "/" ? <HomeIcon  style={{fontSize: '30px'}}/> : <HomeOutlinedIcon style={{fontSize: '30px'}}  /> }  
+        <p className="navbar-icon-text">Home</p>
       </Link>
       <Link to="/explore">
          
       {location.pathname === "/explore" ? <ExploreIcon  style={{fontSize: '30px'}}/> : <ExploreOutlinedIcon style={{fontSize: '30px'}}  /> } 
+      <p className="navbar-icon-text">Explore</p>
       </Link>
        <Link>
         <AddBoxOutlinedIcon onClick={handleAddClick} style={{fontSize: '30px'}}/> 
+        <p className="navbar-icon-text">Add post</p>
        </Link>
       
       <Link to="/messages">
          
       {location.pathname.includes("/messages") ? <ChatBubbleIcon  style={{fontSize: '30px'}}/> : <ChatBubbleOutlineOutlinedIcon style={{fontSize: '30px'}}  /> } 
+      <p className="navbar-icon-text">Messages</p>
       </Link>
       <Link to="/profile">
          
@@ -56,7 +60,7 @@ const Navbar = () => {
           src={profilePhotoUrl}
           alt=""
         /> : <AccountCircleIcon style={{fontSize: "30px"}} /> }
-        
+        <p className="navbar-icon-text">Profile</p>
       </Link>
     </div>
   );

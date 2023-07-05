@@ -20,6 +20,7 @@ const AddPost = () => {
   const [postImage, setPostImage] = useState(null);
   const [caption, setCaption] = useState("");
   const [loading, setLoading] = useState(false)
+  const [err, setErr] = useState(false)
   const { addPostOpen, setAddPostOpen } = useContext(LayoutContext);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -50,52 +51,58 @@ const AddPost = () => {
   const postRef = collection(db, "Posts");
 
   const handleAddPost = () => {
-    try {
-      setLoading(true)
-      const storageRef = ref(storage, uuidv4());
-      const uploadTask = uploadBytesResumable(storageRef, postImage);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          // Observe state change events such as progress, pause, and resume
-          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-       
-          switch (snapshot.state) {
-            case "paused":
-             
-              break;
-            case "running":
-           
-              break;
-          }
-        },
-        (error) => {
-       
-          setLoading(false)
-        },
-        () => {
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+    if(postImage !== null){
+  try {
+  setLoading(true)
+  const storageRef = ref(storage, uuidv4());
+  const uploadTask = uploadBytesResumable(storageRef, postImage);
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      const progress =
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
    
+      switch (snapshot.state) {
+        case "paused":
+         
+          break;
+        case "running":
+       
+          break;
+      }
+    },
+    (error) => {
+   
+      setLoading(false)
+    },
+    () => {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
 
-            const data = await addDoc(postRef, {
-              Postphoto: downloadURL,
-              PostBy: auth.currentUser.uid,
-              PostCaption: caption,
-              Likes: [],
-              time: serverTimestamp(),
-            });
-            setLoading(false)
-            setSelectedImage(null)
-            setCaption("")
-            setAddPostOpen(false)
-          });
-        }
-      );
-    } catch (error) {}
+
+        const data = await addDoc(postRef, {
+          Postphoto: downloadURL,
+          PostBy: auth.currentUser.uid,
+          PostCaption: caption,
+          Likes: [],
+          time: serverTimestamp(),
+        });
+        setLoading(false)
+        setSelectedImage(null)
+        setCaption("")
+        setAddPostOpen(false)
+      });
+    }
+  );
+} catch (error) {}
+}else{
+  setErr(true)
+}
+
+     
   };
 
   return (
@@ -148,6 +155,7 @@ const AddPost = () => {
                   }}
                   placeholder="Write caption here"
                 />
+                <div>
               {
                 loading === false ?
                 <button
@@ -160,6 +168,10 @@ const AddPost = () => {
                 </button> : <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
               }
+              {
+                err && <p className="add-post-error">You need to select an Image. </p>
+              }
+                </div>
               </div>
             </div>
 

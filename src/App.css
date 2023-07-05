@@ -1,5 +1,5 @@
 .outlet-container{
-    height: calc(100vh - 60px);
+    height: 100vh;
     overflow: scroll;
     background-color: #DDE6ED;
     padding-bottom: 20px;
@@ -7,6 +7,20 @@
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
+
+.biggest-outer-div{
+    display: flex;
+}
+
 .outlet-container::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera */
+  }
+
+  @media screen and (max-width: 700px){
+    .outlet-container{
+        height: calc(100vh - 60px);
+    }
+    .biggest-outer-div{
+        flex-direction: column;
+    }
   }

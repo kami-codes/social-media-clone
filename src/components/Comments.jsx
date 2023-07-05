@@ -1,12 +1,19 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { db } from "../config/firebase";
 import "./styles/comments.css";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function Comments(props) {
+
+  const {currentUser} = useContext(AuthContext)
+
   const [commenetUser, setCommentUser] = useState([]);
   const userDetailsRef = collection(db, "userDetails");
+
+const navigate = useNavigate()
 
   const [commentDate, setCommentDate] = useState(
     props.time?.toDate().toDateString()
@@ -25,6 +32,15 @@ function Comments(props) {
     setCommentUser(newArr[0]);
   };
 
+  const handleCommentProfileClick =()=>{
+    if(props.commenetUser === currentUser.userId ){
+      navigate('/profile')
+    }else{
+      navigate(`/user/profile/${props.commentUser}`)
+    }
+
+  }
+
   useEffect(() => {
     fetchUserDetails();
   }, []);
@@ -33,6 +49,7 @@ function Comments(props) {
       <div className="comment-profile">
         <div className="profile-info">
           <img
+          onClick={handleCommentProfileClick}
             src={commenetUser?.profilePic}
             style={{
               width: "30px",
@@ -41,11 +58,10 @@ function Comments(props) {
               objectFit: "cover",
             }}
           />
-          <p className="profile-username-comment">{commenetUser?.displayName}</p>
+            <div className="comment-text">{props.desc}</div>
         </div>
-        <p className="comment-date"> {commentDate} </p>
       </div>
-      <div className="comment-text">{props.desc}</div>
+      
     </div>
   );
 }

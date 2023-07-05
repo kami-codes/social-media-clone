@@ -8,7 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../config/firebase";
 import Post from "./Post";
 import { AuthContext } from "../context/AuthContext";
@@ -129,6 +129,11 @@ function UserProfile() {
 
     
   };
+  
+const navigate = useNavigate()
+  const handleMessageClick =()=>{
+    navigate(`/messages/${id}`)
+  }
 
   const handleFollow = () => {
     updatingFollowers();
@@ -165,11 +170,12 @@ function UserProfile() {
           </div>
           <div className="follow-buttons">
           {isFollow ? (
-            <button className="to-follow-button unfollow" onClick={handleUnfollow}> unfollow</button>
+            <button className="to-follow-button unfollow" onClick={handleUnfollow}> Unfollow</button>
           ) : (
-            <button className="to-follow-button" onClick={handleFollow}>follow</button>
+            <button className="to-follow-button" onClick={handleFollow}>Follow</button>
           )}
-          <button className="to-message-button">message</button>
+          <button onClick={handleMessageClick} className="to-message-button">
+            Message</button>
           </div>
         </div>
       )}

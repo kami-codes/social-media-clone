@@ -16,7 +16,7 @@ const Messagses = () => {
 
   const fetchRecentChats = async()=>{
     const q = query(recentMessageRef, where("members", "array-contains", `${currentUser.userId}`))
-
+    console.log(currentUser.userId)
     const data =await getDocs(q)
     let newArr = []
     data.forEach((docs)=>{
@@ -38,8 +38,8 @@ const Messagses = () => {
         fetchRecentChats();
       }
     };
-    return () => unsub();
-  },[]);
+    unsub();
+  },[currentUser]);
 
   return (
     <div className="message-container">
